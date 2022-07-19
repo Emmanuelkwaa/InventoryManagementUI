@@ -19,4 +19,18 @@ export class ProductServiceService {
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${environment.baseUrl}${this.productWithCategoryUrl}`)
   }
+
+  createProduct(product :Product) :Observable<Product> {
+    return this.http.post<Product>(
+      `${environment.baseUrl}${this.productWithCategoryUrl}`, product
+    );
+  }
+
+  public updateProduct(product :Product) :Observable<Product> {
+    return this.http.put<Product>(`${environment.baseUrl}/${this.productUrl}`, product);
+  }
+
+  public deleteProduct(product: Product): Observable<Product> {
+    return this.http.delete<Product>(`${environment.baseUrl}/${this.productUrl}/${product.id}`);
+  }
 }

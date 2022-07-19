@@ -1,5 +1,12 @@
 <div class="container dashboard">
+    <!-- Material app bar from angular-material-->
+    <mat-toolbar color="primary">
+        <span>Inventory Management</span>
+    </mat-toolbar>
+
+    <!-- summary component -->
     <app-summary></app-summary>
+
+    <!-- product table component -->
     <app-product-table [products]="products"></app-product-table>
 </div>
-
