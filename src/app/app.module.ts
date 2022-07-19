@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductTableComponent } from './components/product-table/product-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SummaryComponent } from './components/summary/summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ProductTableComponent
+    ProductTableComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
