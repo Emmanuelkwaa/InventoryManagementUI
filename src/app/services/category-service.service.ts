@@ -16,7 +16,7 @@ export class CategoryServiceService {
     return this.http.get<Category[]>(`${environment.baseUrl}${this.categoryUrl}`)
   }
 
-  public createHero(category: Category): Observable<Category> {
+  public createCategory(category: Category): Observable<Category> {
     return this.http.post<Category>(`${environment.baseUrl}/${this.categoryUrl}`, category);
   }
 

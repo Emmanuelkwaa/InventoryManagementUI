@@ -19,10 +19,8 @@
         <!-- product category selector -->
         <mat-form-field appearance="outline">
             <mat-label>Product Category</mat-label>
-            <mat-select formControlName="category" placeholder="Category">
-                <mat-option value="Fruit">Fruit</mat-option>
-                <mat-option value="Vegetable">Vegetable</mat-option>
-                <mat-option value="Clothes">Clothes</mat-option>
+            <mat-select formControlName="category" placeholder="Category" *ngIf="categories">
+                <mat-option *ngFor="let category of categories;" value={{category.id}}>{{category.name}}</mat-option>
             </mat-select>
         </mat-form-field>
     

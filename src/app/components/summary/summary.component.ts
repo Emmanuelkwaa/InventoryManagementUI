@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Category } from 'src/app/models/Category';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({

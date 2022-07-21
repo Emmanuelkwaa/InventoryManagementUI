@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../models/Product';
+import { ProductOut } from '../models/ProductOut';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class ProductServiceService {
 
   createProduct(product :Product) :Observable<Product> {
     return this.http.post<Product>(
-      `${environment.baseUrl}${this.productWithCategoryUrl}`, product
+      `${environment.baseUrl}${this.productUrl}`, product
     );
   }
 
