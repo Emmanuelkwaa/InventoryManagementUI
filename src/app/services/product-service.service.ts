@@ -22,9 +22,7 @@ export class ProductServiceService {
   }
 
   createProduct(product :Product) :Observable<Product> {
-    return this.http.post<Product>(
-      `${environment.baseUrl}${this.productUrl}`, product
-    );
+    return this.http.post<Product>(`${environment.baseUrl}${this.productUrl}`, product);
   }
 
   public updateProduct(product :Product) :Observable<Product> {
