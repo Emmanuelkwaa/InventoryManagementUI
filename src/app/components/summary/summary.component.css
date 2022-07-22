@@ -45,3 +45,9 @@
     display: flex;
     column-gap: 10px;
 }
+
+@media only screen and (max-width: 400px) {
+    .inner-card {
+        min-width: 100%;
+    }
+  }

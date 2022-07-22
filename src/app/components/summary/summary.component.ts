@@ -1,9 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Category } from 'src/app/models/Category';
+import { Component, Input, OnInit, } from '@angular/core';
+import { MatDialog, } from '@angular/material/dialog';
 import { Product } from 'src/app/models/Product';
-import { CategoryServiceService } from 'src/app/services/category-service.service';
-import { ProductServiceService } from 'src/app/services/product-service.service';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
@@ -12,12 +9,11 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./summary.component.css']
 })
 export class SummaryComponent implements OnInit {
-  @Input() products :Product[] = [];
-  lowStockCount :any;
+  @Input() products: Product[] = [];
+  @Input() width: string = '';
+  lowStockCount: any;
   constructor(
-    private dialog :MatDialog,
-    private productService: ProductServiceService, 
-    private categoryService: CategoryServiceService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +21,7 @@ export class SummaryComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(DialogComponent, {
-      width: '30%'
+      width: this.width
     });
   }
 
@@ -34,7 +30,7 @@ export class SummaryComponent implements OnInit {
     let countArray: any = [];
 
     this.products.forEach(element => {
-      if(element.availableQuantity > 0 && element.availableQuantity < 10) {
+      if (element.availableQuantity > 0 && element.availableQuantity < 10) {
         countArray.push(element.availableQuantity);
       }
     });
@@ -56,7 +52,7 @@ export class SummaryComponent implements OnInit {
     let countArray: any = [];
 
     this.products.forEach(element => {
-      if(element.availableQuantity == 0) {
+      if (element.availableQuantity == 0) {
         countArray.push(element);
       }
     });

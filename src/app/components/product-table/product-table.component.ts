@@ -15,6 +15,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class ProductTableComponent implements OnInit {
   @Output() products = new EventEmitter<Product[]>();
+  @Input() width: string = '';
 
   displayedColumns: string[] = ['name', 'price', 'category.name', 'availableQuantity', 'action'];
   dataSource!: MatTableDataSource<any>;
@@ -45,7 +46,7 @@ export class ProductTableComponent implements OnInit {
   
   editProduct(row :Product) {
     this.dialog.open(DialogComponent, {
-      width: "30%",
+      width: this.width,
       data:row
     }).afterClosed().subscribe(val => {
       if(val==="updated") {

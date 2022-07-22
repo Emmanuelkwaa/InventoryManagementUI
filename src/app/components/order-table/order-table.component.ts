@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -14,8 +14,9 @@ import { OrderDialogComponent } from '../order-dialog/order-dialog.component';
   styleUrls: ['./order-table.component.css']
 })
 export class OrderTableComponent implements OnInit {
+  @Input() width: string = '';
 
-  displayedColumns: string[] = ['customer.firstName', 'customer.lastName', 'customer.email', 'product.name', 'quantity', 'totalCost', 'action'];
+  displayedColumns: string[] = ['customer.lastName', 'product.name', 'quantity', 'totalCost', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -43,7 +44,7 @@ export class OrderTableComponent implements OnInit {
   
   editOrder(row :Order) {
     this.dialog.open(OrderDialogComponent, {
-      width: "30%",
+      width: this.width,
       data:row
     }).afterClosed().subscribe(val => {
       if(val==="updated") {

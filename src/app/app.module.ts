@@ -25,6 +25,7 @@ import {MatSortModule} from '@angular/material/sort';
 import { OrderTableComponent } from './components/order-table/order-table.component';
 import { OrderDialogComponent } from './components/order-dialog/order-dialog.component';
 import { CategoryDialogComponent } from './components/category-dialog/category-dialog.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CategoryDialogComponent } from './components/category-dialog/category-d
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

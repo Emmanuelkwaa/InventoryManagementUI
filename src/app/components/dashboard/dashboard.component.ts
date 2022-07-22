@@ -10,6 +10,7 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
 })
 export class DashboardComponent implements OnInit {
   products: Product[] = [];
+  width :string = '';
 
   constructor(
     private productService: ProductServiceService, 
@@ -18,10 +19,31 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.products)
+    if (this.detectMob()) {
+      this.width = '100%';
+    } else {
+      this.width = '30%';
+    }
   }
 
   getAllProducts(products : Product[]) {
     this.products = products;
     console.log(this.products)
+  }
+
+  detectMob() {
+    const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i
+    ];
+
+    return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+    });
   }
 }

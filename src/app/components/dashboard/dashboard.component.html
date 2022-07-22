@@ -7,11 +7,11 @@
 
 <div class="container dashboard">
     <!-- summary component -->
-    <app-summary [products]="products"></app-summary>
+    <app-summary [products]="products" [width]="width"></app-summary>
 
     <!-- product table component -->
-    <app-product-table (products)="getAllProducts($event)"></app-product-table>
+    <app-product-table [width]="width" (products)="getAllProducts($event)"></app-product-table>
 
     <!-- order table component -->
-    <app-order-table></app-order-table>
+    <app-order-table [width]="width"></app-order-table>
 </div>
