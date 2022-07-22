@@ -35,6 +35,7 @@ export class OrderTableComponent implements OnInit {
           this.dataSource = new MatTableDataSource(result);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
+          console.log(result);
         },
         error: (err) => {
           alert("Unable to get all orders");
