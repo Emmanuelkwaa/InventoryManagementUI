@@ -27,6 +27,8 @@ export class DashboardComponent implements OnInit {
    * It can then be shared with other components, reducing the amount of http calls to get product
    * @param products An array of products received from a child component
    */
+
+  // TODO make dashboard make backend calls and share information with children component
   getAllProducts(products : Product[]) {
     this.products = products;
   }
