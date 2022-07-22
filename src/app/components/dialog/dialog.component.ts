@@ -97,7 +97,7 @@ export class DialogComponent implements OnInit {
           this.dialogRef.close('updated');
         },
         error: (err) => {
-          alert(err.message);
+          alert("Complete all required field");
         }
       });
   }
