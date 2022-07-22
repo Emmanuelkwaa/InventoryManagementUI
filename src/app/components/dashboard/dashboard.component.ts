@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/Product';
+import { ProductTableComponent } from '../product-table/product-table.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,6 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.products)
     if (this.detectMob()) {
       this.width = '100%';
     } else {

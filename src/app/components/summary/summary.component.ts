@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, } from '@angular/core';
 import { MatDialog, } from '@angular/material/dialog';
 import { Product } from 'src/app/models/Product';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -11,6 +11,8 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class SummaryComponent implements OnInit {
   @Input() products: Product[] = [];
   @Input() width: string = '';
+  @Output() callGetAllProducts = new EventEmitter();
+
   lowStockCount: any;
   constructor(
     private dialog: MatDialog,
@@ -22,7 +24,11 @@ export class SummaryComponent implements OnInit {
   openDialog() {
     this.dialog.open(DialogComponent, {
       width: this.width
-    });
+    }).afterClosed().subscribe(val => {
+      if(val==="created") {
+        this.callGetAllProducts.emit(null);
+      }
+    })
   }
 
   //low stock product must be less than 10 available

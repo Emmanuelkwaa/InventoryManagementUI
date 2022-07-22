@@ -22,7 +22,7 @@ export class OrderTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog :MatDialog, private orderService: OrderService) { }
+  constructor(private dialog: MatDialog, private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.getAllOrders();
@@ -42,29 +42,29 @@ export class OrderTableComponent implements OnInit {
         },
       });
   }
-  
-  editOrder(row :Order) {
+
+  editOrder(row: Order) {
     this.dialog.open(OrderDialogComponent, {
       width: this.width,
-      data:row
+      data: row
     }).afterClosed().subscribe(val => {
-      if(val==="updated") {
+      if (val === "updated") {
         this.getAllOrders();
       }
     })
   }
 
-  deleteOrder(id :number) {
+  deleteOrder(id: number) {
     this.orderService.deleteOrder(id)
-    .subscribe({
-      next : (res :any) => {
-        alert(res.message);
-        this.getAllOrders();
-      },
-      error: (err) => {
-        alert("Unable to delete");
-      }
-    })
+      .subscribe({
+        next: (res: any) => {
+          alert(res.message);
+          this.getAllOrders();
+        },
+        error: (err) => {
+          alert("Unable to delete");
+        }
+      })
   }
 
   applyFilter(event: Event) {
