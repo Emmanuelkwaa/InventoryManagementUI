@@ -2,8 +2,8 @@
     <div class="card-header">
         Summary
     </div>
-    <div class="card-body summary-card-body">
-        <div class="card text-bg-primary inner-card mb-3" style="max-width: 14rem;">
+    <div class="card-body summary-card-body" *ngIf="products">
+        <div class="card text-bg-primary inner-card mb-3" style="max-width: 14rem;" >
             <div class="row g-0">
                 <div class="col-md-4 card-icon">
                     <span class="material-symbols-outlined">
@@ -13,7 +13,7 @@
                 <div class="col-md-8">
                     <div class="card-body inner-card-body">
                         <h3 class="card-title">Total Products</h3>
-                        <h2>56</h2>
+                        <h2>{{products.length}}</h2>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 <div class="col-md-8">
                     <div class="card-body inner-card-body">
                         <h3 class="card-title">Low Stock Products</h3>
-                        <h2>56</h2>
+                        <h2>{{lowStockProduct()}}</h2>
                     </div>
                 </div>
             </div>
@@ -43,22 +43,7 @@
                 <div class="col-md-8">
                     <div class="card-body inner-card-body">
                         <h3 class="card-title">Out of Stock Products</h3>
-                        <h2>56</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card text-bg-warning inner-card mb-3" style="">
-            <div class="row g-0">
-                <div class="col-md-4 card-icon">
-                    <span class="material-symbols-outlined">
-                        disabled_by_default
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body inner-card-body">
-                        <h3 class="card-title">Zero Stock Products</h3>
-                        <h2>56</h2>
+                        <h2 >{{outOfStockProduct()}}</h2>
                     </div>
                 </div>
             </div>
@@ -73,13 +58,14 @@
                 <div class="col-md-8">
                     <div class="card-body inner-card-body">
                         <h3 class="card-title">Most Stock Products</h3>
-                        <h2>56</h2>
+                        <h2>{{mostStockProduct()}}</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card-footer text-muted">
+    <div class="card-footer text-muted footer">
         <button mat-raised-button color="primary" (click)="openDialog()">Add Product</button>
+        <button mat-raised-button color="primary" disabled>Add Category</button>
     </div>
 </div>

@@ -64,33 +64,37 @@ export class DialogComponent implements OnInit {
             next: (res) => {
               alert("Product added successfully");
               this.productForm.reset();
-              this.dialogRef.close('add');
+              this.dialogRef.close('created');
             },
             error: (err) => {
               alert(err.message);
             }
           });
         console.log(product)
-      } else {
-        this.updateProduct()
+      }  else {
+        window.alert("Complete all required fields");
       }
+    } else {
+      this.updateProduct()
     }
   }
 
   updateProduct() {
     let product = new Product();
+    product.id = this.editData.id;
     product.name = this.productForm.controls['productName'].value;
     product.price = this.productForm.controls['price'].value;
     product.category.id = parseInt(this.productForm.controls['category'].value);
     product.details = this.productForm.controls['details'].value;
     product.availableQuantity = this.productForm.controls['quantity'].value;
+    
 
     this.productService.updateProduct(product)
       .subscribe({
         next: (res) => {
-          alert("Product added successfully");
+          alert("Product updated successfully");
           this.productForm.reset();
-          this.dialogRef.close('add');
+          this.dialogRef.close('updated');
         },
         error: (err) => {
           alert(err.message);

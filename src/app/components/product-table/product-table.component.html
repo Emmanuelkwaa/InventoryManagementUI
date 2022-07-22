@@ -20,6 +20,7 @@
             </tr>
         </tbody>
     </table> -->
+    <h2>PRODUCT LIST</h2>
 
     <mat-form-field appearance="standard">
         <mat-label>Search table</mat-label>
@@ -60,7 +61,7 @@
                     <button mat-icon-button color="primary" (click)="editProduct(row)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button color="warn">
+                    <button mat-icon-button color="warn" (click)="deleteProduct(row.id)">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </td>

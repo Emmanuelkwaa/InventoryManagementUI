@@ -22,6 +22,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { OrderTableComponent } from './components/order-table/order-table.component';
+import { OrderDialogComponent } from './components/order-dialog/order-dialog.component';
+import { CategoryDialogComponent } from './components/category-dialog/category-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import {MatSortModule} from '@angular/material/sort';
     DashboardComponent,
     ProductTableComponent,
     SummaryComponent,
-    DialogComponent
+    DialogComponent,
+    OrderTableComponent,
+    OrderDialogComponent,
+    CategoryDialogComponent
   ],
   imports: [
     BrowserModule,

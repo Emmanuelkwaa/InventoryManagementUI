@@ -1,3 +1,4 @@
+<!-- Material app bar from angular-material-->
 <mat-toolbar color="primary">
     <div class="container">
         <span>Inventory Management</span>
@@ -5,12 +6,12 @@
 </mat-toolbar>
 
 <div class="container dashboard">
-    <!-- Material app bar from angular-material-->
-    
-
     <!-- summary component -->
-    <app-summary></app-summary>
+    <app-summary [products]="products"></app-summary>
 
     <!-- product table component -->
-    <app-product-table></app-product-table>
+    <app-product-table (products)="getAllProducts($event)"></app-product-table>
+
+    <!-- order table component -->
+    <app-order-table></app-order-table>
 </div>

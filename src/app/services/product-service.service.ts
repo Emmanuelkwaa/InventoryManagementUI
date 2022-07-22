@@ -29,7 +29,7 @@ export class ProductServiceService {
     return this.http.put<Product>(`${environment.baseUrl}/${this.productUrl}`, product);
   }
 
-  public deleteProduct(product: Product): Observable<Product> {
-    return this.http.delete<Product>(`${environment.baseUrl}/${this.productUrl}/${product.id}`);
+  public deleteProduct(id: number): Observable<Product> {
+    return this.http.delete<Product>(`${environment.baseUrl}/${this.productUrl}/${id}`);
   }
 }

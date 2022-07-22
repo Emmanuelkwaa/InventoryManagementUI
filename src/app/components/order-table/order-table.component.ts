@@ -1,41 +1,39 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Product } from 'src/app/models/Product';
-import { ProductServiceService } from 'src/app/services/product-service.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
+import { OrderService } from 'src/app/services/order.service';
+import { Order } from 'src/app/models/Order';
+import { OrderDialogComponent } from '../order-dialog/order-dialog.component';
 
 @Component({
-  selector: 'app-product-table',
-  templateUrl: './product-table.component.html',
-  styleUrls: ['./product-table.component.css'],
+  selector: 'app-order-table',
+  templateUrl: './order-table.component.html',
+  styleUrls: ['./order-table.component.css']
 })
-export class ProductTableComponent implements OnInit {
-  @Output() products = new EventEmitter<Product[]>();
+export class OrderTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'price', 'category.name', 'availableQuantity', 'action'];
+  displayedColumns: string[] = ['customer.firstName', 'customer.lastName', 'customer.email', 'product.name', 'quantity', 'totalCost', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog :MatDialog, private productService: ProductServiceService) { }
+  constructor(private dialog :MatDialog, private orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.getAllProducts();
+    this.getAllOrders();
   }
 
-  getAllProducts() {
-    this.productService.getAllProducts()
+  getAllOrders() {
+    this.orderService.getAllOrders()
       .subscribe({
-        next: (result: Product[]) => {
+        next: (result: Order[]) => {
           this.dataSource = new MatTableDataSource(result);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
-          this.products.emit(result);
         },
         error: (err) => {
           alert("Unable to get all orders");
@@ -43,23 +41,23 @@ export class ProductTableComponent implements OnInit {
       });
   }
   
-  editProduct(row :Product) {
-    this.dialog.open(DialogComponent, {
+  editOrder(row :Order) {
+    this.dialog.open(OrderDialogComponent, {
       width: "30%",
       data:row
     }).afterClosed().subscribe(val => {
       if(val==="updated") {
-        this.getAllProducts();
+        this.getAllOrders();
       }
     })
   }
 
-  deleteProduct(id :number) {
-    this.productService.deleteProduct(id)
+  deleteOrder(id :number) {
+    this.orderService.deleteOrder(id)
     .subscribe({
       next : (res :any) => {
         alert(res.message);
-        this.getAllProducts();
+        this.getAllOrders();
       },
       error: (err) => {
         alert("Unable to delete");

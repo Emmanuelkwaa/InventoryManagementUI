@@ -40,3 +40,8 @@
 .card-icon span {
     font-size: 3rem;
 }
+
+.footer {
+    display: flex;
+    column-gap: 10px;
+}
